@@ -7,6 +7,7 @@ module Spree
 
     devise :database_authenticatable, :registerable, :recoverable,
            :rememberable, :trackable, :validatable, :encryptable, :encryptor => 'authlogic_sha512'
+    devise :confirmable if Spree::Auth::Config[:confirmable]
 
     has_many :orders
 
@@ -29,19 +30,20 @@ module Spree
     end
 
     protected
-      def password_required?
-        !persisted? || password.present? || password_confirmation.present?
-      end
+
+    def password_required?
+      !persisted? || password.present? || password_confirmation.present?
+    end
 
     private
 
-      def check_completed_orders
-        raise DestroyWithOrdersError if orders.complete.present?
-      end
+    def check_completed_orders
+      raise DestroyWithOrdersError if orders.complete.present?
+    end
 
-      def set_login
-        # for now force login to be same as email, eventually we will make this configurable, etc.
-        self.login ||= self.email if self.email
-      end
+    def set_login
+      # for now force login to be same as email, eventually we will make this configurable, etc.
+      self.login ||= self.email if self.email
+    end
   end
 end
