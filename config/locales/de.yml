@@ -38,6 +38,9 @@ de:
     user_sessions:
       signed_in: Erfolgreich angemeldet.
       signed_out: Erfolgreich abgemeldet.
+    user_confirmations:
+      spree_user:
+        confirmed: Ihr Konto wurde erfolgreich aktiviert. Sie können sich jetzt anmelden.
   errors:
     messages:
       already_confirmed: wurde berreits bestätigt

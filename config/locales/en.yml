@@ -42,6 +42,9 @@ en:
     user_sessions:
       signed_in: Signed in successfully.
       signed_out: Signed out successfully.
+    user_confirmations:
+      spree_user:
+        confirmed: Your account was successfully confirmed. You can now sign in.
   errors:
     messages:
       already_confirmed: was already confirmed
