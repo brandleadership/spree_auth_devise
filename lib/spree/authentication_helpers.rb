@@ -5,6 +5,7 @@ module Spree
       receiver.send :helper_method, :spree_login_path
       receiver.send :helper_method, :spree_signup_path
       receiver.send :helper_method, :spree_logout_path
+      receiver.send :helper_method, :spree_confirmation_path
     end
 
     def spree_current_user
@@ -21,6 +22,10 @@ module Spree
 
     def spree_logout_path
       spree.logout_path
+    end
+
+    def spree_confirmation_path
+      spree.confirmation_path
     end
   end
 end
