@@ -25,7 +25,7 @@ module Spree
     end
 
     def spree_confirmation_path
-      spree.confirmation_path
+      spree.spree_user_confirmation_path
     end
   end
 end
