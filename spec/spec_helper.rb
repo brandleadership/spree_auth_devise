@@ -12,6 +12,7 @@ require 'capybara/poltergeist'
 require 'shoulda-matchers'
 require 'ffaker'
 require 'database_cleaner'
+require 'phantomjs'
 
 Dir[File.join(File.dirname(__FILE__), 'support/**/*.rb')].each { |f| require f }
 
@@ -50,6 +51,9 @@ RSpec.configure do |config|
   config.include Devise::TestHelpers, :type => :controller
   config.include Rack::Test::Methods, :type => :feature
 
+  Capybara.register_driver :poltergeist do |app|
+    Capybara::Poltergeist::Driver.new(app, { phantomjs: Phantomjs.path })
+  end
   Capybara.javascript_driver = :poltergeist
 end
 
